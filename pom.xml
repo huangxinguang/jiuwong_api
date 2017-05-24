@@ -8,11 +8,12 @@
     <artifactId>jiuwong_api</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!--version-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>3.2.18.RELEASE</spring.version>
-        <druid.version>1.0.9</druid.version>
-        <mybatis.version>3.2.1</mybatis.version>
+        <c3p0.version>0.9.1.2</c3p0.version>
+        <mybatis.version>3.1.1</mybatis.version>
         <mybatis-spring.version>1.2.0</mybatis-spring.version>
         <java.version>1.5</java.version>
         <axis2.version>1.6.2</axis2.version>
@@ -79,13 +80,14 @@
         </dependency>
         <!-- spring end -->
 
-        <!--连接池-->
+        <!--c3p0连接池-->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>${druid.version}</version>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>${c3p0.version}</version>
         </dependency>
 
+        <!--mysql链接驱动-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -140,5 +142,25 @@
         </dependency>
 
     </dependencies>
+    <!--打成jar包-->
+    <!--<build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    &lt;!&ndash;这部分可有可无,加上的话则直接生成可运行jar包&ndash;&gt;
+                    &lt;!&ndash;<archive>&ndash;&gt;
+                    &lt;!&ndash;<manifest>&ndash;&gt;
+                    &lt;!&ndash;<mainClass>${exec.mainClass}</mainClass>&ndash;&gt;
+                    &lt;!&ndash;</manifest>&ndash;&gt;
+                    &lt;!&ndash;</archive>&ndash;&gt;
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>-->
+
     
 </project>

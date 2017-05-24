@@ -18,7 +18,7 @@
 	</context:component-scan>
 
 	<!--axis2交给spring来管理-->
-	<bean id="applicationContext" class="org.apache.axis2.extensions.spring.receivers.ApplicationContextHolder"></bean>
+	<bean id="applicationContext" class="org.apache.axis2.extensions.spring.receivers.ApplicationContextHolder"/>
 	
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">  
 		<property name="locations">  
@@ -31,24 +31,19 @@
 	<!--链接池-->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="${driverClassName}"/>
-		<property name="jdbcUrl" value="${url}"></property>
-		<property name="user" value="${username}"></property>
-		<property name="password" value="${password}"></property>
-
+		<property name="jdbcUrl" value="${url}"/>
+		<property name="user" value="${username}"/>
+		<property name="password" value="${password}"/>
 		<!--连接池中保留的最小连接数。-->
-		<property name="minPoolSize" value="${minPoolSize}"></property>
-
+		<property name="minPoolSize" value="${minPoolSize}"/>
 		<!--连接池中保留的最大连接数。Default: 15 -->
-		<property name="maxPoolSize" value="${maxPoolSize}"></property>
-
+		<property name="maxPoolSize" value="${maxPoolSize}"/>
 		<!--初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
-		<property name="initialPoolSize" value="${initialPoolSize}"></property>
-
+		<property name="initialPoolSize" value="${initialPoolSize}"/>
 		<!--最大空闲时间,60秒内未使用则连接被丢弃。若为0则永不丢弃。Default: 0 -->
-		<property name="maxIdleTime" value="${maxIdleTime}"></property>
-
+		<property name="maxIdleTime" value="${maxIdleTime}"/>
 		<!--当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
-		<property name="acquireIncrement" value="${acquireIncrement}"></property>
+		<property name="acquireIncrement" value="${acquireIncrement}"/>
 
 	</bean>
 
@@ -57,17 +52,17 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
     	<property name="dataSource" ref="dataSource" />
 		<!-- mapper扫描 -->
-		<property name="mapperLocations" value="classpath:/mapper/*.xml"></property>
-        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+		<property name="mapperLocations" value="classpath:/mapper/*.xml"/>
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
     </bean>
 
 
 	<bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"></property>
+		<property name="dataSource" ref="dataSource"/>
 	</bean>
 
 	<!-- 启用注解 -->
-	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<tx:annotation-driven/>
 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.ectrip.dao" />
